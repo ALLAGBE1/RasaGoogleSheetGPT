@@ -1,0 +1,42 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Aide oo</title>
+        <style>
+          body {
+              padding: 0;
+              width: 100vw;
+              height: 100vh;
+              margin: 0;
+              background-image: url('https://www.w3schools.com/w3images/ocean.jpg');
+              background-size: contain;
+          }
+        </style>
+    </head>
+    <body>
+        <script>!(function () {
+            let e = document.createElement("script"),
+              t = document.head || document.getElementsByTagName("head")[0];
+            (e.src =
+              "https://cdn.jsdelivr.net/npm/rasa-webchat@1.0.1/lib/index.js"),
+              // Replace 1.x.x with the version that you want
+              (e.async = !0),
+              (e.onload = () => {
+                window.WebChat.default(
+                  {
+                    title: "Bienvenue",
+                    // initPayload: "/greet",
+                    customData: { language: "en" },
+                    socketUrl: "http://localhost:5005",
+                    // add other props here
+                  },
+                  null
+                );
+              }),
+              localStorage.clear(),
+              t.insertBefore(e, t.firstChild);
+          })();
+        </script>
+    </body>
+</html>
