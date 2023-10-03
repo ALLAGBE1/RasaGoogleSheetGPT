@@ -52,16 +52,20 @@ class Simple_Google_sheet_or_ChatGPT_Action(Action):
             
         except Exception as e:
             print(f"Erreur lors de l'accès à Google Sheets : {e}")
-            return self.get_default_fallback_response()
+            # return self.get_default_fallback_response()
+            return self.get_answers_from_chatgpt(user_text)
 
 
     def get_answers_from_chatgpt(self, user_text: Text) -> Text:
         # Utilisez votre clé d'API OpenAI ici
-        openai.api_key = "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"
+        openai.api_key = "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"
+
+        # Ajoutez un préfixe en français pour spécifier la langue
+        prompt = "En français : " + user_text
         
         response = openai.Completion.create(
             engine="text-davinci-003",
-            prompt=user_text,
+            prompt=prompt,
             max_tokens=1024,
             n=1,
             stop=None,
@@ -76,77 +80,3 @@ class Simple_Google_sheet_or_ChatGPT_Action(Action):
 
 
 
-
-
-
-    # def get_answers_from_sheets(self, intent: Text, entities: List[Dict[Text, Any]], user_text: Text) -> Text:
-    #     # Connect to Google Sheets
-    #     sheet_url = "https://docs.google.com/spreadsheets/d/1ejQ9Z9y0S2p_JY3ipKjl7MTWKtbMOnH8Ve5XfvxSrj4/edit#gid=0"
-    #     GOOGLE_SHEET_URL = f"https://docs.google.com/spreadsheets/d/{sheet_url}/export?format=csv&gid=0"
-        
-    #     try:
-    #         s = requests.get(GOOGLE_SHEET_URL).content
-    #         proxy_df = pd.read_csv(io.StringIO(s.decode('utf-8')))
-            
-    #         if entities:
-    #             filtered_df = proxy_df[(proxy_df['Intent'] == intent) & (proxy_df['Entity'] == entities[0]['value'])]
-
-    #             if not filtered_df.empty:
-    #                 answers = filtered_df['Answer'].tolist()
-    #                 return random.choice(answers)
-
-    #         return self.get_answers_from_chatgpt(user_text)
-    #     except Exception as e:
-    #         print(f"Erreur lors de l'accès à Google Sheets : {e}")
-    #         return self.get_default_fallback_response()
-
-
-        # def get_answers_from_sheets(self, intent: Text, entities: List[Dict[Text, Any]], user_text: Text) -> Text:
-    #     sheet_url = "https://docs.google.com/spreadsheets/d/1ejQ9Z9y0S2p_JY3ipKjl7MTWKtbMOnH8Ve5XfvxSrj4/gviz/tq?tqx=out:csv&sheet=Sheet1"
-        
-    #     try:
-    #         s = requests.get(sheet_url).content
-    #         proxy_df = pd.read_csv(io.StringIO(s.decode('utf-8')))
-            
-    #         # Filtrer par l'intent et l'entité
-    #         filtered_df = proxy_df[(proxy_df['Intent'] == intent) & (proxy_df['Entity'] == entities[0]['value'])]
-    #         print(f"ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ, {filtered_df}")
-
-    #         if not filtered_df.empty:
-    #             answers = filtered_df['Answer'].tolist()
-    #             print(f"sssssssssssssssssssssssssssssssssssssssss, {answers}")
-    #             return random.choice(answers)
-
-    #         # Si le DataFrame filtré est vide, utilisez ChatGPT comme fallback
-    #         # return self.get_answers_from_chatgpt(user_text)
-    #         return "Yaisssssssssssssssssssssssssssssssssssssssss"
-            
-    #     except Exception as e:
-    #         print(f"Erreur lors de l'accès à Google Sheets : {e}")
-    #         return self.get_default_fallback_response()
-
-    
-    # def get_answers_from_sheets(self, intent: Text, entities: List[Dict[Text, Any]], user_text: Text) -> Text:
-    #     # Connect to Google Sheets
-    #     sheet_url = "https://docs.google.com/spreadsheets/d/1ejQ9Z9y0S2p_JY3ipKjl7MTWKtbMOnH8Ve5XfvxSrj4/gviz/tq?tqx=out:csv&sheet=Sheet1"
-        
-    #     try:
-    #         s = requests.get(sheet_url).content
-    #         proxy_df = pd.read_csv(io.StringIO(s.decode('utf-8')))
-            
-    #         if entities:
-    #             print(f"ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ, {entities}")
-    #             filtered_df = proxy_df[(proxy_df['Intent'] == intent) & (proxy_df['Entity'] == entities[0]['value'])]
-    #             print(f"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, {filtered_df}")
-
-    #             if not filtered_df.empty:
-    #                 answers = filtered_df['Answer'].tolist()
-    #                 return random.choice(answers)
-
-    #         # return self.get_answers_from_chatgpt(user_text)
-    #         else:
-    #             # return self.get_answers_from_chatgpt(user_text)
-    #             return self.get_answers_from_chatgpt(user_text)
-    #     except Exception as e:
-    #         print(f"Erreur lors de l'accès à Google Sheets : {e}")
-    #         return self.get_default_fallback_response()

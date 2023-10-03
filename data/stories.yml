@@ -14,7 +14,7 @@ stories:
 
 - story: simple google sheet action use
   steps:
-  - intent: what_is_x
+  - intent: Je veux
   - action: simple_google_sheet_or_chatgpt_action
 
 

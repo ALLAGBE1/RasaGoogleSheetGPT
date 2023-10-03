@@ -3,14 +3,14 @@ version: "3.1"
 intents:
   - greet
   - utter_intent
-  - what_is_x
+  - Je veux
 
 entities:
   - object_entity
 
 responses:
   utter_response:
-  - text: "This is direct utter, no custom action" 
+  - text: "Ceci est direct, aucune action personnalisée" 
 
 actions:
 - utter_response

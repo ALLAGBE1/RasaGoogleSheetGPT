@@ -7,12 +7,20 @@ nlu:
     - do you know how to utter?
     - show me an example of utter?
     - how to utter?
-- intent: what_is_x
+- intent: Je veux 
   examples: |
-    - what is a [dog](object_entity)?
-    - what is a [chair](object_entity)?
-    - what a [dog](object_entity) is?
-    - what a [chair](object_entity) is
+    - Je veux [manger](object_entity)
+    - Je veux [acheter](object_entity)
+    - Je veux [boire](object_entity) 
+    - Je veux [apprendre](object_entity)
+# - intent: what_is_x
+#   examples: |
+#     - what is a [dog](object_entity)?
+#     - what is a [chair](object_entity)?
+#     - what a [dog](object_entity) is?
+#     - what a [chair](object_entity) is
+
+
 
 
 
